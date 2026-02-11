@@ -105,7 +105,7 @@ function highlightActiveLink() {
 // Mock logout
 function logout() {
     // localStorage.removeItem('hunna_is_logged_in'); // Backend handles session now
-    window.location.href = 'http://localhost:5000/auth/logout';
+    window.location.href = '/auth/logout';
 }
 
 async function initMockData() {
