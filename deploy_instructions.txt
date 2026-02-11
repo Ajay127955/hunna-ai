@@ -1,0 +1,1 @@
+REM Deployment script removed as per user request. Use git commands directly.
