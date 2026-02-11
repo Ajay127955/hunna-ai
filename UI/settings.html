@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hunna AI Team Management Settings</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-modal {
+            background: rgba(22, 24, 29, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex overflow-hidden">
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 border-r border-slate-200 dark:border-white/5 flex flex-col h-screen bg-white dark:bg-[#0b0c0e]">
+        <div class="p-6">
+            <div class="flex items-center gap-3">
+                <a href="dashboard.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">H</span>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">Hunna AI</span>
+                </a>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 py-4 space-y-1">
+            <div class="text-[10px] uppercase tracking-widest text-slate-400 dark:text-slate-500 font-bold px-3 mb-4">
+                Workspace</div>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                href="#">
+                <span class="material-icons text-sm">settings</span>
+                <span class="text-sm font-medium">General</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary transition-all" href="#">
+                <span class="material-icons text-sm">group</span>
+                <span class="text-sm font-medium">Team Members</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                href="#">
+                <span class="material-icons text-sm">credit_card</span>
+                <span class="text-sm font-medium">Billing</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                href="#">
+                <span class="material-icons text-sm">security</span>
+                <span class="text-sm font-medium">Security</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                href="#">
+                <span class="material-icons text-sm">extension</span>
+                <span class="text-sm font-medium">Integrations</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-slate-200 dark:border-white/5">
+            <div class="flex items-center gap-3 p-2">
+                <img class="w-8 h-8 rounded-full bg-slate-200 object-cover"
+                    data-alt="User profile avatar showing a professional man"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc8i9KYGKOmkpiSYYwMA8UZn3ZCrCp8dfuJ9UW7XmuadY7LcfsLAttMt7VgomKDy0rGtfDHBfsmPrAhqAg8BSZArWfOzEadDZ9wdfU6oVaG7Ulmoz1HYxj-3h0dOI2U3Sf5WJjEbSOrJSIs9a-EvArfGHJKoErFo1XJX1E9bUKDUd6E_W5kgCBSoJv_HAMranm1QyPl1gdG7bJv8hjsdfWeC6gJP2j4r5xYr9pqihMjNUT88Mb5jKCFbNaI2aZNhXqJVe_9ltDWCLf" />
+                <div class="overflow-hidden">
+                    <p class="text-xs font-semibold truncate">Alex Rivera</p>
+                    <p class="text-[10px] text-slate-400 truncate">alex@hunna.ai</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto custom-scrollbar relative bg-background-light dark:bg-background-dark">
+        <!-- Sticky Header -->
+        <header
+            class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-8 py-6 flex justify-between items-center border-b border-slate-200 dark:border-white/5">
+            <div>
+                <h1 class="text-2xl font-bold">Team Members</h1>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Manage who has access to this workspace and
+                    their permissions.</p>
+            </div>
+            <button
+                class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-all font-medium text-sm shadow-lg shadow-primary/20">
+                <span class="material-icons text-lg">person_add</span>
+                Invite Member
+            </button>
+        </header>
+        <div class="p-8">
+            <!-- Search & Filters -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="relative w-full max-w-sm">
+                    <span
+                        class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+                    <input
+                        class="w-full pl-10 pr-4 py-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none text-sm transition-all"
+                        placeholder="Search by name or email..." type="text" />
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="flex items-center gap-2 px-3 py-2 border border-slate-200 dark:border-white/10 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-white/5 transition-all">
+                        <span class="material-icons text-sm text-slate-400">filter_list</span>
+                        Filter
+                    </button>
+                </div>
+            </div>
+            <!-- Table -->
+            <div
+                class="bg-white dark:bg-[#16181d] rounded-xl border border-slate-200 dark:border-white/5 overflow-hidden shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02]">
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">User</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">Role</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">Status</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400 text-right">
+                                Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 dark:divide-white/5">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <img class="w-10 h-10 rounded-full bg-slate-100"
+                                        data-alt="Team member profile picture of Alex Rivera"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSK7HkXnPkUdYy6owR9ESgSrfICpgpt-uE0EbvjmbhnmCYpEcZLm1ly05kpO6Qd8B4SLuH7lUHgUAbprtkVR4WvM1DgaYPhKKpiXEqLbiNgRyE0v_XAp-dTzHtHku8VzPCjH3e7Jew7cI4oWk2mZ04b2EZs-K5zpnQBnshbZ8kki4l1ZGYIhLxl7HBPD7FUfK9CRVPAz0_S1e8akXSkXOKB9eQHG-oeS1PBx53QsTYxOG_bSDXfkwUUhVOFzs1Ea4O6sWeHNXga7fP" />
+                                    <div>
+                                        <p class="font-semibold text-sm">Alex Rivera</p>
+                                        <p class="text-xs text-slate-500">alex@hunna.ai</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <select
+                                    class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg text-xs font-medium px-3 py-1.5 focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none">
+                                    <option selected="">Admin</option>
+                                    <option>Editor</option>
+                                    <option>Viewer</option>
+                                </select>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-500">
+                                    Active
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button
+                                    class="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-lg transition-colors">
+                                    <span class="material-icons text-slate-400 text-sm">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <img class="w-10 h-10 rounded-full bg-slate-100"
+                                        data-alt="Team member profile picture of Sarah Chen"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-5P7BOlX2XM0nbnEDUmRQfOk78Jps_YsxRc19ZHqGBWOf22K8Uevqcew5ORYJJZNAlRHeNViVwN2jKVwoAa0fM6O22gOSDCV9SrNmbm2CI4u7_LRo0XFX1ZlSKnHN7z2BGHdn84vidsQG3CkbqXAr4qio04DtEha_MnsqhZ9apt5kzllvT0epjvXOVm1OxIopZFXrbMrkSfvFxRDQVF4Qs9hzD6gzQk0yDWB_85CCBAKlsN4Gjwjmp-jJ4SEP242PDmVHcyn3oTn4" />
+                                    <div>
+                                        <p class="font-semibold text-sm">Sarah Chen</p>
+                                        <p class="text-xs text-slate-500">sarah.c@hunna.ai</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <select
+                                    class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg text-xs font-medium px-3 py-1.5 focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none">
+                                    <option>Admin</option>
+                                    <option selected="">Editor</option>
+                                    <option>Viewer</option>
+                                </select>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-500">
+                                    Active
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button
+                                    class="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-lg transition-colors">
+                                    <span class="material-icons text-slate-400 text-sm">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">
+                                        JD</div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Jordan Davis</p>
+                                        <p class="text-xs text-slate-500">jordan.d@hunna.ai</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <select
+                                    class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg text-xs font-medium px-3 py-1.5 focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none">
+                                    <option>Admin</option>
+                                    <option>Editor</option>
+                                    <option selected="">Viewer</option>
+                                </select>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-slate-500/10 text-slate-500">
+                                    Invited
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button
+                                    class="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-lg transition-colors">
+                                    <span class="material-icons text-slate-400 text-sm">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <img class="w-10 h-10 rounded-full bg-slate-100"
+                                        data-alt="Team member profile picture of Marcus Thorne"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgc0KDSYSBxDf1HxqsCeqE2RdxNFoWZjeW9NeQ7LLwHqSbfX7mLLH9Fzhcei5EMlY7EIfitJtArl2fwv_6XLpG5T__cZHjWxgOSI8d4t9OnB14g6NWPwHXLHOQ4rZUVecl-vvTRUG70F4znjf413GMSmK8mrOniKlUgk22Ix0ncBuLIcmDGnt3A4__nzPlEH5u0eNj_xAjeGsTmzzpHBvMKsbDOZxZ_UEtZL6JRZIE7ChesdBeEvsIDaj3ZUwqtKOOLevZqDPHSLjf" />
+                                    <div>
+                                        <p class="font-semibold text-sm">Marcus Thorne</p>
+                                        <p class="text-xs text-slate-500">marcus@hunna.ai</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <select
+                                    class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg text-xs font-medium px-3 py-1.5 focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none">
+                                    <option>Admin</option>
+                                    <option selected="">Editor</option>
+                                    <option>Viewer</option>
+                                </select>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-500">
+                                    Active
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button
+                                    class="p-2 hover:bg-slate-200 dark:hover:bg-white/10 rounded-lg transition-colors">
+                                    <span class="material-icons text-slate-400 text-sm">more_vert</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div
+                    class="p-4 border-t border-slate-200 dark:border-white/5 flex items-center justify-between text-xs font-medium text-slate-500">
+                    <p>Showing 4 of 12 members</p>
+                    <div class="flex gap-2">
+                        <button
+                            class="px-3 py-1.5 border border-slate-200 dark:border-white/10 rounded-md opacity-50 cursor-not-allowed">Previous</button>
+                        <button
+                            class="px-3 py-1.5 border border-slate-200 dark:border-white/10 rounded-md hover:bg-slate-50 dark:hover:bg-white/5">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Glassmorphism Modal Overlay -->
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-slate-900/40 backdrop-blur-sm">
+            <div
+                class="glass-modal w-full max-w-md rounded-2xl shadow-2xl p-8 transform animate-in fade-in zoom-in duration-300">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold">Invite New Member</h2>
+                        <p class="text-sm text-slate-400 mt-1">Add a collaborator to your workspace.</p>
+                    </div>
+                    <button class="text-slate-400 hover:text-white transition-colors">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Email
+                            Address</label>
+                        <input
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-slate-600"
+                            placeholder="name@company.com" type="email" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Workspace
+                            Role</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="cursor-pointer">
+                                <input checked="" class="peer hidden" name="modal-role" type="radio" />
+                                <div
+                                    class="p-3 border border-white/10 rounded-lg text-center peer-checked:border-primary peer-checked:bg-primary/10 transition-all">
+                                    <p class="text-xs font-bold">Admin</p>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input class="peer hidden" name="modal-role" type="radio" />
+                                <div
+                                    class="p-3 border border-white/10 rounded-lg text-center peer-checked:border-primary peer-checked:bg-primary/10 transition-all">
+                                    <p class="text-xs font-bold">Editor</p>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input class="peer hidden" name="modal-role" type="radio" />
+                                <div
+                                    class="p-3 border border-white/10 rounded-lg text-center peer-checked:border-primary peer-checked:bg-primary/10 transition-all">
+                                    <p class="text-xs font-bold">Viewer</p>
+                                </div>
+                            </label>
+                        </div>
+                        <p class="mt-3 text-[11px] text-slate-500 leading-relaxed">
+                            <span class="font-semibold text-slate-400">Admin:</span> Full access to all features and
+                            billing.
+                        </p>
+                    </div>
+                    <div class="flex gap-3 pt-2">
+                        <button
+                            class="flex-1 bg-white/5 hover:bg-white/10 py-3 rounded-lg font-bold text-sm transition-all">Cancel</button>
+                        <button
+                            class="flex-1 bg-primary hover:bg-primary/90 py-3 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/20">Send
+                            Invite</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

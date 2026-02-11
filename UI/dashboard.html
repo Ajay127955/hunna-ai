@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Hunna AI Dashboard</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#00eeff",
+            "background-light": "#f5f8f8",
+            "background-dark": "#0B0C10",
+            "surface-dark": "#121212",
+            "accent-purple": "#7000ff",
+          },
+          fontFamily: {
+            "display": ["Inter"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .glass {
+      background: rgba(18, 18, 18, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 238, 255, 0.1);
+    }
+
+    .neon-glow {
+      box-shadow: 0 0 15px rgba(0, 238, 255, 0.3);
+    }
+
+    .sidebar-active {
+      border-right: 2px solid #00eeff;
+      background: linear-gradient(90deg, rgba(0, 238, 255, 0.1) 0%, rgba(0, 238, 255, 0) 100%);
+      color: #00eeff;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(0, 238, 255, 0.2);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Left Sidebar -->
+    <aside class="w-64 bg-surface-dark border-r border-primary/10 flex flex-col h-full z-50">
+      <div class="p-6 flex items-center gap-3">
+        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center neon-glow">
+          <span class="material-icons-outlined text-background-dark font-bold">bolt</span>
+        </div>
+        <h1 class="text-xl font-bold tracking-tight text-white">HUNNA<span class="text-primary">.AI</span></h1>
+      </div>
+      <nav class="flex-1 px-4 mt-4 space-y-2 overflow-y-auto custom-scrollbar">
+        <a class="sidebar-active flex items-center gap-3 px-4 py-3 rounded text-sm font-medium transition-all group"
+          href="dashboard.html">
+          <span class="material-icons-outlined text-[20px]">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-slate-400 hover:text-primary hover:bg-primary/5 transition-all group"
+          href="chat.html">
+          <span class="material-icons-outlined text-[20px]">chat_bubble_outline</span>
+          <span>AI Chat</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-slate-400 hover:text-primary hover:bg-primary/5 transition-all group"
+          href="email.html">
+          <span class="material-icons-outlined text-[20px]">mail_outline</span>
+          <span>Email Reader</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-slate-400 hover:text-primary hover:bg-primary/5 transition-all group"
+          href="resume.html">
+          <span class="material-icons-outlined text-[20px]">description</span>
+          <span>Resume Analyzer</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-slate-400 hover:text-primary hover:bg-primary/5 transition-all group"
+          href="code_assistant.html">
+          <span class="material-icons-outlined text-[20px]">code</span>
+          <span>Code Assistant</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-slate-400 hover:text-primary hover:bg-primary/5 transition-all group"
+          href="image_generator.html">
+          <span class="material-icons-outlined text-[20px]">image</span>
+          <span>Image Generator</span>
+        </a>
+        <div class="my-6 border-t border-primary/5 mx-4"></div>
+        <a class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-slate-400 hover:text-primary hover:bg-primary/5 transition-all group"
+          href="analytics.html">
+          <span class="material-icons-outlined text-[20px]">bar_chart</span>
+          <span>Analytics</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-slate-400 hover:text-primary hover:bg-primary/5 transition-all group"
+          href="settings.html">
+          <span class="material-icons-outlined text-[20px]">settings</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="p-6 bg-primary/5 border-t border-primary/10">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent-purple p-[1px]">
+            <div class="w-full h-full rounded-lg bg-surface-dark flex items-center justify-center overflow-hidden">
+              <img class="w-full h-full object-cover" data-alt="User profile avatar male"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6EbJ0hoS6yQZQv7cF9Pnm7bMNiFxZv5adZrOsIr8jJZjfwbFMAkPVNQW7-WA_G7ojDWlM_UVlsCxK4heEIx61aq1OBs3az3-PtylgeSQu2lTKPi7bzwJqfwZNNdQ40MujycFu4QnImuM6_SsGPmW5Wb4Y-JCNa8JpSe1YrtmPQMUZ333_phfnN0uTgVg80t3b5EEOgda_tozU42XanNe_VLHRXQRetZcV9eoUh5sYoyBPJHNH-cO-PHYcQD91uT7x7r-1dUzXr-R1" />
+            </div>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-white">Alex Rivera</p>
+            <p class="text-xs text-primary/70">Pro Member</p>
+          </div>
+          <button onclick="logout()"
+            class="ml-auto text-slate-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
+            title="Sign Out">
+            <span class="material-icons-outlined text-[20px]">logout</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col relative overflow-hidden bg-background-dark">
+      <!-- Top Bar -->
+      <header class="glass sticky top-0 z-40 px-8 py-4 flex items-center justify-between">
+        <div class="flex-1 max-w-2xl">
+          <div class="relative group">
+            <span
+              class="material-icons-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+            <input
+              class="w-full bg-surface-dark/50 border border-primary/10 rounded-xl py-2.5 pl-12 pr-4 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-slate-200 placeholder:text-slate-500"
+              placeholder="Ask Hunna anything..." type="text" />
+            <div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1">
+              <kbd
+                class="px-2 py-0.5 rounded bg-surface-dark border border-primary/10 text-[10px] text-slate-400">⌘</kbd>
+              <kbd
+                class="px-2 py-0.5 rounded bg-surface-dark border border-primary/10 text-[10px] text-slate-400">K</kbd>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-6 ml-8">
+          <button class="relative text-slate-400 hover:text-primary transition-colors">
+            <span class="material-icons-outlined">notifications</span>
+            <span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border-2 border-background-dark"></span>
+          </button>
+          <button
+            class="flex items-center gap-2 bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg text-sm font-semibold transition-all border border-primary/20">
+            <span class="material-icons-outlined text-sm">bolt</span>
+            Upgrade
+          </button>
+        </div>
+      </header>
+      <div class="flex-1 overflow-y-auto p-8 space-y-8 custom-scrollbar">
+        <!-- Welcome Header -->
+        <section>
+          <h2
+            class="text-3xl font-bold bg-gradient-to-r from-white via-white to-primary/50 bg-clip-text text-transparent">
+            Welcome back, Alex
+          </h2>
+          <p class="text-slate-400 mt-1">Your AI systems are running optimally across 4 active projects.</p>
+        </section>
+        <!-- Usage Analytics Card -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 glass rounded-xl p-6 relative overflow-hidden">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <h3 class="font-semibold text-lg text-white">AI Credits Usage</h3>
+                <p class="text-sm text-slate-400">Performance metrics for the last 7 days</p>
+              </div>
+              <div class="flex gap-4">
+                <div class="text-right">
+                  <p class="text-xs text-slate-400 uppercase tracking-wider">Remaining</p>
+                  <p class="text-xl font-bold text-primary">12,450</p>
+                </div>
+              </div>
+            </div>
+            <!-- Pseudo Graph Container -->
+            <div class="h-48 flex items-end gap-1 relative">
+              <svg class="absolute inset-0 w-full h-full" preserveaspectratio="none">
+                <defs>
+                  <lineargradient id="lineGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+                    <stop offset="0%" stop-color="#00eeff" stop-opacity="0.3"></stop>
+                    <stop offset="100%" stop-color="#00eeff" stop-opacity="0"></stop>
+                  </lineargradient>
+                </defs>
+                <path d="M0 160 Q 100 80 200 120 T 400 60 T 600 100 T 800 40 L 800 200 L 0 200 Z"
+                  fill="url(#lineGradient)"></path>
+                <path d="M0 160 Q 100 80 200 120 T 400 60 T 600 100 T 800 40" fill="none" stroke="#00eeff"
+                  stroke-width="3"></path>
+              </svg>
+              <div
+                class="absolute bottom-0 left-0 w-full flex justify-between text-[10px] text-slate-500 font-medium px-2">
+                <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+              </div>
+            </div>
+          </div>
+          <!-- Side Stats -->
+          <div class="flex flex-col gap-4">
+            <div class="flex-1 glass rounded-xl p-6 flex flex-col justify-center">
+              <span class="text-slate-400 text-sm font-medium">Efficiency Score</span>
+              <div class="flex items-end gap-2 mt-2">
+                <span class="text-4xl font-bold text-white">98.4%</span>
+                <span class="text-primary text-sm mb-1 flex items-center">
+                  <span class="material-icons-outlined text-xs">arrow_upward</span> 2.1%
+                </span>
+              </div>
+            </div>
+            <div class="flex-1 glass rounded-xl p-6 flex flex-col justify-center">
+              <span class="text-slate-400 text-sm font-medium">Active Agents</span>
+              <div class="flex items-end gap-2 mt-2">
+                <span class="text-4xl font-bold text-white">12</span>
+                <span class="text-slate-400 text-xs mb-1 ml-1">Across 3 platforms</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Quick Launch -->
+        <section>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-semibold text-white">Quick Actions</h3>
+            <a class="text-xs text-primary hover:underline" href="#">View All Tools</a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button
+              class="group p-1 rounded-xl bg-gradient-to-r from-primary/20 to-accent-purple/20 hover:from-primary hover:to-accent-purple transition-all duration-300">
+              <div class="bg-surface-dark rounded-[10px] p-4 flex items-center gap-4 text-left">
+                <div
+                  class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-surface-dark transition-colors">
+                  <span class="material-icons-outlined">chat</span>
+                </div>
+                <div>
+                  <p class="font-bold text-white">Start New Chat</p>
+                  <p class="text-xs text-slate-400">Instant AI response</p>
+                </div>
+              </div>
+            </button>
+            <button
+              class="group p-1 rounded-xl bg-gradient-to-r from-primary/20 to-accent-purple/20 hover:from-primary hover:to-accent-purple transition-all duration-300">
+              <div class="bg-surface-dark rounded-[10px] p-4 flex items-center gap-4 text-left">
+                <div
+                  class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-surface-dark transition-colors">
+                  <span class="material-icons-outlined">upload_file</span>
+                </div>
+                <div>
+                  <p class="font-bold text-white">Upload Resume</p>
+                  <p class="text-xs text-slate-400">Analyze &amp; Score</p>
+                </div>
+              </div>
+            </button>
+            <button
+              class="group p-1 rounded-xl bg-gradient-to-r from-primary/20 to-accent-purple/20 hover:from-primary hover:to-accent-purple transition-all duration-300">
+              <div class="bg-surface-dark rounded-[10px] p-4 flex items-center gap-4 text-left">
+                <div
+                  class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-surface-dark transition-colors">
+                  <span class="material-icons-outlined">brush</span>
+                </div>
+                <div>
+                  <p class="font-bold text-white">Generate Image</p>
+                  <p class="text-xs text-slate-400">Diffusion Model v4</p>
+                </div>
+              </div>
+            </button>
+          </div>
+        </section>
+        <!-- Bottom Grid -->
+        <section class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+          <!-- Recent Activity -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-white">Recent Activity</h3>
+              <button class="text-xs text-slate-400 hover:text-white">Clear History</button>
+            </div>
+            <div id="recent-activity-list" class="glass rounded-xl divide-y divide-primary/5">
+              <div
+                class="p-4 flex items-center justify-between hover:bg-primary/5 transition-colors cursor-pointer group">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center">
+                    <span class="material-icons-outlined text-sm text-slate-400">picture_as_pdf</span>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-200">Summary of Meeting_Notes.pdf</p>
+                    <p class="text-xs text-slate-500">Document Reader • 2 hours ago</p>
+                  </div>
+                </div>
+                <span
+                  class="material-icons-outlined text-slate-500 group-hover:text-primary transition-colors">chevron_right</span>
+              </div>
+              <div
+                class="p-4 flex items-center justify-between hover:bg-primary/5 transition-colors cursor-pointer group">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center">
+                    <span class="material-icons-outlined text-sm text-slate-400">data_object</span>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-200">Refactored script.py</p>
+                    <p class="text-xs text-slate-500">Code Assistant • 5 hours ago</p>
+                  </div>
+                </div>
+                <span
+                  class="material-icons-outlined text-slate-500 group-hover:text-primary transition-colors">chevron_right</span>
+              </div>
+              <div
+                class="p-4 flex items-center justify-between hover:bg-primary/5 transition-colors cursor-pointer group">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center">
+                    <span class="material-icons-outlined text-sm text-slate-400">auto_awesome</span>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-slate-200">Social Media Content Plan</p>
+                    <p class="text-xs text-slate-500">AI Chat • Yesterday</p>
+                  </div>
+                </div>
+                <span
+                  class="material-icons-outlined text-slate-500 group-hover:text-primary transition-colors">chevron_right</span>
+              </div>
+            </div>
+          </div>
+          <!-- Tool Recommendations -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-white">Recommended for you</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="glass p-4 rounded-xl border border-primary/5 hover:border-primary/20 transition-all cursor-pointer group">
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent-purple/10 flex items-center justify-center text-accent-purple mb-3 group-hover:scale-110 transition-transform">
+                  <span class="material-icons-outlined">storage</span>
+                </div>
+                <h4 class="text-sm font-bold text-white">SQL Optimizer</h4>
+                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">Instantly refactor complex queries for better
+                  performance.</p>
+              </div>
+              <div
+                class="glass p-4 rounded-xl border border-primary/5 hover:border-primary/20 transition-all cursor-pointer group">
+                <div
+                  class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3 group-hover:scale-110 transition-transform">
+                  <span class="material-icons-outlined">language</span>
+                </div>
+                <h4 class="text-sm font-bold text-white">Web Scraper AI</h4>
+                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">Turn any website into structured data with
+                  simple prompts.</p>
+              </div>
+              <div
+                class="glass p-4 rounded-xl border border-primary/5 hover:border-primary/20 transition-all cursor-pointer group">
+                <div
+                  class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500 mb-3 group-hover:scale-110 transition-transform">
+                  <span class="material-icons-outlined">translate</span>
+                </div>
+                <h4 class="text-sm font-bold text-white">Auto-Localize</h4>
+                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">Translate entire app codebases while keeping
+                  logic intact.</p>
+              </div>
+              <div
+                class="glass p-4 rounded-xl border border-primary/5 hover:border-primary/20 transition-all cursor-pointer group">
+                <div
+                  class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500 mb-3 group-hover:scale-110 transition-transform">
+                  <span class="material-icons-outlined">psychology</span>
+                </div>
+                <h4 class="text-sm font-bold text-white">Mind Map AI</h4>
+                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">Visualize brainstorming sessions into
+                  interactive maps.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- Background subtle glows -->
+      <div
+        class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none">
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-purple/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none">
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hunna AI Resume Analyzer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0da6f2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0B0C10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0C10;
+        }
+
+        .glass {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(13, 166, 242, 0.1);
+        }
+
+        .radial-progress {
+            background: radial-gradient(closest-side, #0B0C10 79%, transparent 80% 100%),
+                conic-gradient(#0da6f2 85%, #161B22 0);
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(13, 166, 242, 0.3);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #161B22;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #0da6f2;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-200 min-h-screen font-display">
+    <!-- Header Navigation -->
+    <header class="border-b border-primary/10 bg-background-dark/80 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-[1600px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-8">
+                <div class="flex items-center space-x-2">
+                    <a href="dashboard.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                            <span class="material-icons text-white text-xl">insights</span>
+                        </div>
+                        <span class="text-xl font-bold tracking-tight text-white">Hunna<span
+                                class="text-primary">AI</span></span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-2 text-sm font-medium text-slate-500">
+                    <a class="hover:text-primary transition-colors" href="#">Tools</a>
+                    <span class="material-icons text-xs">chevron_right</span>
+                    <span class="text-slate-300">Resume Analyzer</span>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button
+                    class="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center space-x-2">
+                    <span class="material-icons text-sm">refresh</span>
+                    <span>Re-analyze</span>
+                </button>
+                <div class="h-8 w-px bg-primary/10"></div>
+                <div class="flex items-center space-x-3">
+                    <div class="text-right hidden sm:block">
+                        <div class="text-xs font-semibold text-white">Alex Rivera</div>
+                        <div class="text-[10px] text-slate-500 uppercase tracking-wider">Pro Account</div>
+                    </div>
+                    <div class="w-9 h-9 rounded-full overflow-hidden border border-primary/30">
+                        <img class="w-full h-full object-cover" data-alt="User profile picture of a professional man"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdpnJsYcXasTBGj87ln--lLNJRU4JqKQ5__wlSXx0qdtIbwxP2hE86Szh3_rmUmNc7ODub6jRypuObL-ut2FgFAplVougsUDT-l-vwCHpOigcLkNrqckNmHz_qrESkdei0ieyC2iHDvrvdOEy-tOfZ4IDrApQ61CIqH61d3daEQ8HmloIXxH09CBVV7auAjsPrx460V3nJQY2EFaRRFaVIRe4xPrIuKA82nR23GD6TCx3VM5YBj1OFIGR86-DOvReIa2UMTcawQRfT" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-[1600px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left Column: Input Zone -->
+        <div class="lg:col-span-5 flex flex-col space-y-6">
+            <div class="flex flex-col h-full space-y-6">
+                <!-- Resume Upload Section -->
+                <div class="flex-1 min-h-[300px]">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-widest flex items-center">
+                            <span class="material-icons text-primary text-sm mr-2">upload_file</span>
+                            Source Document
+                        </h2>
+                        <span class="text-xs text-slate-500 italic">PDF, DOCX up to 10MB</span>
+                    </div>
+                    <div
+                        class="h-[calc(100%-2rem)] border-2 border-dashed border-primary/30 rounded-xl bg-primary/5 hover:bg-primary/10 transition-all flex flex-col items-center justify-center group cursor-pointer relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div
+                            class="w-16 h-16 bg-background-dark border border-primary/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons text-primary text-3xl">cloud_upload</span>
+                        </div>
+                        <p class="text-white font-medium mb-1">Upload Resume</p>
+                        <p class="text-slate-500 text-sm">Drag and drop or <span
+                                class="text-primary underline">browse</span></p>
+                    </div>
+                </div>
+                <!-- Job Description Section -->
+                <div class="flex-1 min-h-[350px]">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-widest flex items-center">
+                            <span class="material-icons text-primary text-sm mr-2">description</span>
+                            Target Job Description
+                        </h2>
+                    </div>
+                    <div class="glass h-[calc(100%-2rem)] rounded-xl relative">
+                        <textarea
+                            class="w-full h-full bg-transparent border-none focus:ring-0 p-4 text-slate-300 text-sm font-display resize-none custom-scrollbar"
+                            placeholder="Paste the job requirements, responsibilities, and qualifications here for the AI to analyze against your profile..."></textarea>
+                        <div class="absolute bottom-4 right-4 flex space-x-2">
+                            <button
+                                class="bg-background-dark/50 hover:bg-background-dark p-2 rounded-lg border border-primary/10 text-slate-400 transition-colors">
+                                <span class="material-icons text-sm">content_paste</span>
+                            </button>
+                            <button
+                                class="bg-background-dark/50 hover:bg-background-dark p-2 rounded-lg border border-primary/10 text-slate-400 transition-colors">
+                                <span class="material-icons text-sm">clear_all</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Right Column: Intelligence Zone -->
+        <div class="lg:col-span-7 flex flex-col space-y-6">
+            <!-- Analysis Summary Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Match Score -->
+                <div
+                    class="md:col-span-1 glass rounded-xl p-6 flex flex-col items-center justify-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-2">
+                        <span class="material-icons text-primary/30 text-xs">info</span>
+                    </div>
+                    <div class="w-32 h-32 rounded-full radial-progress flex items-center justify-center neon-glow">
+                        <div class="text-center">
+                            <span class="text-3xl font-bold text-white block leading-none">85<span
+                                    class="text-lg">%</span></span>
+                            <span class="text-[10px] text-primary font-bold uppercase tracking-tighter">Match</span>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-slate-400 text-xs font-medium uppercase tracking-widest">Confidence Score</p>
+                </div>
+                <!-- Metrics -->
+                <div class="md:col-span-2 glass rounded-xl p-6 grid grid-cols-2 gap-4">
+                    <div class="bg-background-dark/40 rounded-lg p-4 border border-primary/5">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Keywords</span>
+                            <span class="text-primary text-xs font-bold">14/18</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary w-[77%]" style="box-shadow: 0 0 10px rgba(13, 166, 242, 0.4)">
+                            </div>
+                        </div>
+                        <p class="mt-3 text-[11px] text-slate-400">Excellent terminology usage for this role.</p>
+                    </div>
+                    <div class="bg-background-dark/40 rounded-lg p-4 border border-primary/5">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Experience</span>
+                            <span class="text-primary text-xs font-bold">92%</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary w-[92%]" style="box-shadow: 0 0 10px rgba(13, 166, 242, 0.4)">
+                            </div>
+                        </div>
+                        <p class="mt-3 text-[11px] text-slate-400">Past roles align closely with requirements.</p>
+                    </div>
+                    <div class="bg-background-dark/40 rounded-lg p-4 border border-primary/5">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Format</span>
+                            <span class="text-green-500 text-xs font-bold uppercase">Optimal</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-green-500 w-full"></div>
+                        </div>
+                        <p class="mt-3 text-[11px] text-slate-400">ATS parsing compatibility is very high.</p>
+                    </div>
+                    <div class="bg-background-dark/40 rounded-lg p-4 border border-primary/5">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Impact</span>
+                            <span class="text-yellow-500 text-xs font-bold uppercase">Medium</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-yellow-500 w-[65%]"></div>
+                        </div>
+                        <p class="mt-3 text-[11px] text-slate-400">Needs more quantified metrics/results.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Skill Gap Analysis -->
+            <div class="glass rounded-xl p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-sm font-semibold text-slate-200 uppercase tracking-wider">Skill Gap Analysis</h3>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-1">
+                            <div class="w-2 h-2 rounded-full bg-primary"></div>
+                            <span class="text-[10px] text-slate-400 uppercase">You</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <div class="w-2 h-2 rounded-full bg-slate-700"></div>
+                            <span class="text-[10px] text-slate-400 uppercase">Required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-5">
+                    <!-- Skill Item -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-medium">
+                            <span class="text-slate-300">Cloud Architecture (AWS)</span>
+                            <span class="text-slate-500">Exceeds</span>
+                        </div>
+                        <div class="h-2 w-full bg-slate-800/50 rounded-full relative overflow-hidden">
+                            <div class="absolute h-full bg-slate-700 w-4/5 left-0"></div>
+                            <div
+                                class="absolute h-full bg-primary w-full left-0 z-10 shadow-[0_0_8px_rgba(13,166,242,0.3)]">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Skill Item -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-medium">
+                            <span class="text-slate-300">Python &amp; AI Orchestration</span>
+                            <span class="text-slate-500">Perfect Match</span>
+                        </div>
+                        <div class="h-2 w-full bg-slate-800/50 rounded-full relative overflow-hidden">
+                            <div class="absolute h-full bg-slate-700 w-[90%] left-0"></div>
+                            <div
+                                class="absolute h-full bg-primary w-[90%] left-0 z-10 shadow-[0_0_8px_rgba(13,166,242,0.3)]">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Skill Item -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-medium">
+                            <span class="text-slate-300">GraphQL / REST APIs</span>
+                            <span class="text-slate-500">Gap Found</span>
+                        </div>
+                        <div class="h-2 w-full bg-slate-800/50 rounded-full relative overflow-hidden">
+                            <div class="absolute h-full bg-slate-700 w-full left-0"></div>
+                            <div
+                                class="absolute h-full bg-primary w-[45%] left-0 z-10 shadow-[0_0_8px_rgba(13,166,242,0.3)]">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Skill Item -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-medium">
+                            <span class="text-slate-300">CI/CD &amp; DevOps Automation</span>
+                            <span class="text-slate-500">Moderate</span>
+                        </div>
+                        <div class="h-2 w-full bg-slate-800/50 rounded-full relative overflow-hidden">
+                            <div class="absolute h-full bg-slate-700 w-[85%] left-0"></div>
+                            <div
+                                class="absolute h-full bg-primary w-[70%] left-0 z-10 shadow-[0_0_8px_rgba(13,166,242,0.3)]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Suggested Improvements & Keyword Cloud -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Recommendations -->
+                <div class="glass rounded-xl p-6 flex flex-col">
+                    <h3 class="text-sm font-semibold text-slate-200 uppercase tracking-wider mb-4 flex items-center">
+                        <span class="material-icons text-primary text-base mr-2">auto_awesome</span>
+                        AI Recommendations
+                    </h3>
+                    <div class="space-y-3 flex-1 overflow-y-auto custom-scrollbar max-h-[220px] pr-2">
+                        <div
+                            class="p-3 bg-primary/5 border-l-2 border-primary rounded-r-lg flex items-start space-x-3 group">
+                            <span class="material-icons text-primary text-sm mt-0.5">add_circle_outline</span>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                <strong class="text-white block mb-0.5">Quantify Achievements</strong>
+                                Add metrics to your "Lead Developer" role. (e.g., "Improved system latency by 40%").
+                            </p>
+                        </div>
+                        <div
+                            class="p-3 bg-yellow-500/5 border-l-2 border-yellow-500/50 rounded-r-lg flex items-start space-x-3">
+                            <span class="material-icons text-yellow-500 text-sm mt-0.5">priority_high</span>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                <strong class="text-white block mb-0.5">Missing Skill: GraphQL</strong>
+                                Mention your experience with GraphQL or complex API integrations to bridge the current
+                                gap.
+                            </p>
+                        </div>
+                        <div class="p-3 bg-primary/5 border-l-2 border-primary rounded-r-lg flex items-start space-x-3">
+                            <span class="material-icons text-primary text-sm mt-0.5">add_circle_outline</span>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                <strong class="text-white block mb-0.5">Title Optimization</strong>
+                                Change "Software Engineer" to "Full-stack Cloud Architect" to match job title seniority.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Keyword Optimization -->
+                <div class="glass rounded-xl p-6 flex flex-col">
+                    <h3 class="text-sm font-semibold text-slate-200 uppercase tracking-wider mb-4 flex items-center">
+                        <span class="material-icons text-primary text-base mr-2">label</span>
+                        Keyword Cloud
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">AWS
+                            Lambda</span>
+                        <span
+                            class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">Microservices</span>
+                        <span
+                            class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">Kubernetes</span>
+                        <span
+                            class="px-2 py-1 bg-slate-700/50 text-slate-400 text-[10px] font-bold rounded uppercase border border-slate-600">GraphQL</span>
+                        <span
+                            class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">Terraform</span>
+                        <span
+                            class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">Node.js</span>
+                        <span
+                            class="px-2 py-1 bg-slate-700/50 text-slate-400 text-[10px] font-bold rounded uppercase border border-slate-600">Unit
+                            Testing</span>
+                        <span
+                            class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">Agile</span>
+                        <span
+                            class="px-2 py-1 bg-slate-700/50 text-slate-400 text-[10px] font-bold rounded uppercase border border-slate-600">ElasticSearch</span>
+                        <span
+                            class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">Security</span>
+                        <span
+                            class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">Scalability</span>
+                        <span
+                            class="px-2 py-1 bg-slate-700/50 text-slate-400 text-[10px] font-bold rounded uppercase border border-slate-600">Redis</span>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-primary/10 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 italic">Highlighted terms found in resume</span>
+                        <button class="text-primary text-[10px] font-bold uppercase hover:underline">Copy
+                            Suggestions</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Floating Action Toolbar (Mobile Only) -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 md:hidden">
+        <button
+            class="bg-primary text-white rounded-full px-6 py-3 shadow-xl shadow-primary/40 flex items-center space-x-2 font-bold text-sm">
+            <span class="material-icons">bolt</span>
+            <span>Run New Analysis</span>
+        </button>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

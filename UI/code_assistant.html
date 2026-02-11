@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hunna AI Code Assistant Workspace</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "editor-bg": "#0a0a0a",
+                        "syntax-blue": "#61afef",
+                        "syntax-purple": "#c678dd",
+                        "syntax-amber": "#d19a66",
+                        "syntax-green": "#98c379",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(16, 25, 34, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-glow {
+            box-shadow: 0 0 15px -5px #0d7ff2;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #101922;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col overflow-hidden">
+    <!-- Top Navigation / Prompt Bar Area -->
+    <header class="h-20 flex items-center px-6 border-b border-white/10 glass z-20">
+        <div class="flex items-center gap-3 w-64">
+            <a href="dashboard.html" class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                    <span class="material-icons text-white text-xl">auto_awesome</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white">Hunna<span
+                        class="text-primary">.AI</span></span>
+            </a>
+        </div>
+        <div class="flex-1 max-w-4xl mx-auto flex gap-4 px-4">
+            <div class="relative flex-1 group">
+                <input
+                    class="w-full bg-editor-bg border border-white/10 rounded-lg py-3 px-12 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-slate-200 transition-all placeholder:text-slate-500"
+                    placeholder="Describe the function or component you want to build..." type="text" />
+                <span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">terminal</span>
+            </div>
+            <div class="relative group">
+                <select
+                    class="bg-editor-bg border border-white/10 rounded-lg py-3 pl-4 pr-10 appearance-none focus:ring-2 focus:ring-primary outline-none cursor-pointer text-slate-300">
+                    <option>TypeScript</option>
+                    <option>Python</option>
+                    <option>Go Lang</option>
+                    <option>Rust</option>
+                </select>
+                <span
+                    class="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none">expand_more</span>
+            </div>
+            <button
+                class="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg flex items-center gap-2 code-glow transition-all active:scale-95 whitespace-nowrap">
+                <span class="material-icons text-sm">bolt</span>
+                Generate Code
+            </button>
+        </div>
+        <div class="w-64 flex justify-end gap-3">
+            <button class="p-2 text-slate-400 hover:text-white transition-colors">
+                <span class="material-icons">settings</span>
+            </button>
+            <div
+                class="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center overflow-hidden">
+                <img alt="User Profile" class="w-full h-full object-cover" data-alt="Developer profile avatar image"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH2RsiqZVshO56Sjo6OeFT7IJ2KUb9H4egftcokZCg0NDCo99kRMDAg_DlhLFz4SBPx8FTD-pki2qcu6w84DgGZuotff1WulvoKSpDlK-l3cQTQlYIgCytLnVyIHGopy7tej9RMVek-nk_PjCg0rexK-jNuCj0QWjsZKZaUSBlzIUa6EL8I_ESxgIEyLjLv7L5D1DjKQYWnAJDk7ZOiP0bGkDehgqClR4WV-7jHKXKzZAjgoN5LR8FkndVT3clOwo-OGBO4hqdOyGX" />
+            </div>
+        </div>
+    </header>
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar: Snippets History -->
+        <aside class="w-64 border-r border-white/10 bg-background-dark/50 flex flex-col">
+            <div class="p-4 border-b border-white/5">
+                <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">History</h3>
+            </div>
+            <div class="flex-1 overflow-y-auto py-2">
+                <div class="px-3 py-2">
+                    <button
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary border border-primary/20 text-sm font-medium transition-all group">
+                        <span class="material-icons text-lg">code</span>
+                        <span class="truncate">Storage Hook</span>
+                        <span class="ml-auto text-[10px] opacity-60">2m ago</span>
+                    </button>
+                </div>
+                <div class="px-3 py-1">
+                    <button
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-slate-400 hover:text-slate-200 text-sm transition-all">
+                        <span class="material-icons text-lg text-syntax-purple">functions</span>
+                        <span class="truncate">Auth Middleware</span>
+                        <span class="ml-auto text-[10px]">1h ago</span>
+                    </button>
+                </div>
+                <div class="px-3 py-1">
+                    <button
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-slate-400 hover:text-slate-200 text-sm transition-all">
+                        <span class="material-icons text-lg text-syntax-amber">api</span>
+                        <span class="truncate">Stripe Connector</span>
+                        <span class="ml-auto text-[10px]">3h ago</span>
+                    </button>
+                </div>
+                <div class="px-3 py-1">
+                    <button
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-slate-400 hover:text-slate-200 text-sm transition-all">
+                        <span class="material-icons text-lg text-syntax-green">view_quilt</span>
+                        <span class="truncate">Dashboard Layout</span>
+                        <span class="ml-auto text-[10px]">Yesterday</span>
+                    </button>
+                </div>
+                <div class="px-3 py-1">
+                    <button
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-slate-400 hover:text-slate-200 text-sm transition-all">
+                        <span class="material-icons text-lg text-syntax-blue">cloud_sync</span>
+                        <span class="truncate">Redis Caching Service</span>
+                        <span class="ml-auto text-[10px]">2d ago</span>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4 border-t border-white/5">
+                <button
+                    class="w-full flex items-center justify-center gap-2 py-2 text-sm text-slate-500 hover:text-slate-200 transition-colors">
+                    <span class="material-icons text-sm">delete_outline</span>
+                    Clear History
+                </button>
+            </div>
+        </aside>
+        <!-- Main Editor View -->
+        <main class="flex-1 relative flex flex-col bg-editor-bg">
+            <!-- Inner Action Toolbar -->
+            <div class="absolute top-6 right-8 flex items-center gap-2 z-10">
+                <div class="flex items-center glass rounded-lg p-1 shadow-2xl">
+                    <button
+                        class="p-2 text-slate-400 hover:text-white hover:bg-white/5 rounded transition-all flex items-center gap-2 px-3">
+                        <span class="material-icons text-lg">content_copy</span>
+                        <span class="text-xs font-medium">Copy</span>
+                    </button>
+                    <div class="w-px h-4 bg-white/10 mx-1"></div>
+                    <button
+                        class="p-2 text-slate-400 hover:text-white hover:bg-white/5 rounded transition-all flex items-center gap-2 px-3">
+                        <span class="material-icons text-lg">download</span>
+                        <span class="text-xs font-medium">Download</span>
+                    </button>
+                </div>
+                <button
+                    class="bg-syntax-green/20 hover:bg-syntax-green/30 text-syntax-green border border-syntax-green/30 px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg transition-all active:scale-95">
+                    <span class="material-icons">play_arrow</span>
+                    <span class="text-sm font-bold uppercase tracking-wider">Run Simulation</span>
+                </button>
+            </div>
+            <!-- Editor Surface -->
+            <div class="flex-1 overflow-auto p-8 font-mono text-[14px] leading-relaxed select-text">
+                <div class="flex min-w-full">
+                    <!-- Line Numbers -->
+                    <div class="w-12 text-slate-600 text-right pr-6 select-none opacity-50">
+                        1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20
+                    </div>
+                    <!-- Code Content -->
+                    <div class="flex-1 text-slate-300">
+                        <span class="text-syntax-purple italic">import</span> { useState, useEffect, useCallback } <span
+                            class="text-syntax-purple">from</span> <span
+                            class="text-syntax-green">'react'</span>;<br /><br />
+                        <span class="text-slate-500 font-normal">// AI-Generated: Debounced LocalStorage
+                            Hook</span><br />
+                        <span class="text-syntax-purple">export const</span> <span
+                            class="text-syntax-blue">useLocalStorage</span> = (key: <span
+                            class="text-syntax-amber">string</span>, initialValue: <span
+                            class="text-syntax-amber">any</span>) =&gt; {<br />
+                          <span class="text-syntax-purple">const</span> [storedValue, setStoredValue] = <span
+                            class="text-syntax-blue">useState</span>(() =&gt; {<br />
+                            <span class="text-syntax-purple">try</span> {<br />
+                              <span class="text-syntax-purple">const</span> item = <span
+                            class="text-syntax-amber">window</span>.localStorage.<span
+                            class="text-syntax-blue">getItem</span>(key);<br />
+                              <span class="text-syntax-purple">return</span> item ? JSON.<span
+                            class="text-syntax-blue">parse</span>(item) : initialValue;<br />
+                            } <span class="text-syntax-purple">catch</span> (error) {<br />
+                              console.<span class="text-syntax-blue">error</span>(error);<br />
+                              <span class="text-syntax-purple">return</span> initialValue;<br />
+                            }<br />
+                          });<br /><br />
+                          <span class="text-syntax-purple">const</span> <span class="text-syntax-blue">setValue</span> =
+                        <span class="text-syntax-blue">useCallback</span>((value: <span
+                            class="text-syntax-amber">any</span>) =&gt; {<br />
+                            <span class="text-syntax-purple">try</span> {<br />
+                              <span class="text-syntax-purple">const</span> valueToStore = value <span
+                            class="text-syntax-purple">instanceof</span> <span class="text-syntax-amber">Function</span>
+                        ? value(storedValue) : value;<br />
+                              <span class="text-syntax-blue">setStoredValue</span>(valueToStore);<br />
+                              <span class="text-syntax-amber">window</span>.localStorage.<span
+                            class="text-syntax-blue">setItem</span>(key, JSON.<span
+                            class="text-syntax-blue">stringify</span>(valueToStore));<br />
+                            } <span class="text-syntax-purple">catch</span> (error) {<br />
+                              console.<span class="text-syntax-blue">error</span>(error);<br />
+                            }<br />
+                          }, [key, storedValue]);<br /><br />
+                          <span class="text-syntax-purple">return</span> [storedValue, setValue];<br />
+                        };
+                    </div>
+                </div>
+            </div>
+            <!-- Footer / Status Bar -->
+            <footer
+                class="h-8 bg-background-dark border-t border-white/5 flex items-center justify-between px-4 text-[11px] text-slate-500 select-none">
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-2 h-2 rounded-full bg-syntax-green"></div>
+                        <span>AI Ready</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="material-icons text-[14px]">cloud_done</span>
+                        <span>Synced</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span>Line 18, Col 24</span>
+                    <span>Spaces: 2</span>
+                    <span>UTF-8</span>
+                    <div class="bg-primary/20 text-primary px-2 py-0.5 rounded font-bold">TypeScript JSX</div>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <!-- Floating AI Prompt Overlay (Contextual) -->
+    <div class="fixed bottom-12 right-12">
+        <button
+            class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl code-glow hover:scale-110 transition-transform">
+            <span class="material-icons text-2xl">comment</span>
+        </button>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

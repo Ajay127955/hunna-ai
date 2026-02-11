@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hunna AI Image Generator Workspace</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(26, 29, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .image-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .glow-button {
+            box-shadow: 0 0 15px rgba(13, 127, 242, 0.4);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex overflow-hidden">
+    <!-- Sidebar: Generation History -->
+    <aside
+        class="w-72 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-background-light dark:bg-background-dark z-20">
+        <div class="p-6 border-b border-slate-200 dark:border-slate-800">
+            <a href="dashboard.html" class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                    <span class="material-icons-round text-white text-xl">Auto_awesome</span>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight">Hunna AI</h1>
+            </a>
+        </div>
+        <div class="flex-1 overflow-y-auto p-4 custom-scrollbar">
+            <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-2">Recent Generations</h2>
+            <div class="space-y-4">
+                <!-- History Item 1 -->
+                <div class="group cursor-pointer">
+                    <div
+                        class="relative rounded-lg overflow-hidden aspect-square mb-2 border border-slate-200 dark:border-slate-800">
+                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                            data-alt="Cyberpunk neon city street view"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJGmCn7qhlodgJhd_LH6p-qVlm2-NLTJxmfYA3wQTtyu1ayiNzLaHNPPxbMR1HIW1wgbajSnKmEq9s7zQcXKhXx1QhWrKGmNHry2_C2f24n5XzZZez2CxKhYwmL_HOZk0nmOBlPfC4sJ6RLO0B8D45p34z2dG52l1Nt_S-jHHT30XZzkoopGf7CPiMKI69iB3kFUydQMhmccJWA_dy32Vs2ixVnnfeZyfp_Ml4DxzYN9KejxsXxd0RXqzuB2gBM_abaIxtQXO9Dolx" />
+                        <div
+                            class="absolute bottom-1 right-1 bg-black/60 backdrop-blur-md px-1.5 py-0.5 rounded text-[10px] text-white">
+                            16:9</div>
+                    </div>
+                    <p class="text-xs text-slate-400 line-clamp-2 px-1">Futuristic neon cityscape in the style of
+                        cyberpunk...</p>
+                    <span class="text-[10px] text-slate-500 px-1">2 mins ago</span>
+                </div>
+                <!-- History Item 2 -->
+                <div class="group cursor-pointer opacity-70 hover:opacity-100">
+                    <div
+                        class="relative rounded-lg overflow-hidden aspect-square mb-2 border border-slate-200 dark:border-slate-800">
+                        <img class="w-full h-full object-cover" data-alt="Abstract colorful flowing energy waves"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTk-ENoRGhm0LR-HEG1ItnMKvLWkP8x_YKmfGn4Lyxv5jOyuu61254fDMVgHBgfKbEidO5vR-q1mmKdacPnLov-WAsXLrtwuX2masQ1DBNvFYJfphSvwgxMhCxNyzEkYLu5m3z8RQ9tfi3TE2Xwn8SLA8ygCreC0fo5p5QNeE2-u3VfV7kgZ2gQBCjlvvOVVsy_Jl_JVcIdiupugBouq8fxcrcSCVqt5Fhz4K-9nlAp_9iGY3fIDkM-UZO0OwUtNa4vsPnNij-u1Ok" />
+                        <div
+                            class="absolute bottom-1 right-1 bg-black/60 backdrop-blur-md px-1.5 py-0.5 rounded text-[10px] text-white">
+                            1:1</div>
+                    </div>
+                    <p class="text-xs text-slate-400 line-clamp-2 px-1">Abstract liquid chrome iridescent flow...</p>
+                    <span class="text-[10px] text-slate-500 px-1">1 hour ago</span>
+                </div>
+                <!-- History Item 3 -->
+                <div class="group cursor-pointer opacity-70 hover:opacity-100">
+                    <div
+                        class="relative rounded-lg overflow-hidden aspect-square mb-2 border border-slate-200 dark:border-slate-800">
+                        <img class="w-full h-full object-cover" data-alt="Surreal landscape with floating islands"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkwwIA-4MkjCNVW67Qa4YXtPxts_Q06R4tXtpn5OZARMKoXN8zXjJLRPcdMjllSZWMSMy7-0oLOqJOGN8BlMm6UTadwPS4u5Xva2mVBVG67alIp2yN5Vi48ZfKzGZ-UA-me3MEFb3biVGLsK_GmaAIuSzaJJK00fpOROpdXnz7zYhqzKJD3AB6pdAQBXOqmULZ2Xz4ObiIfeW2KfNF6kxCBFLsx2Yx0iXVeyJvXFw4K1JMJ8Bvmn0vYWD7zW4M5oeMTOjxoxvLn9a4" />
+                        <div
+                            class="absolute bottom-1 right-1 bg-black/60 backdrop-blur-md px-1.5 py-0.5 rounded text-[10px] text-white">
+                            4:3</div>
+                    </div>
+                    <p class="text-xs text-slate-400 line-clamp-2 px-1">Floating islands in a lavender sky...</p>
+                    <span class="text-[10px] text-slate-500 px-1">Yesterday</span>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-slate-200 dark:border-slate-800">
+            <div
+                class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 cursor-pointer transition-colors">
+                <img class="w-10 h-10 rounded-full border-2 border-primary/30" data-alt="User profile avatar portrait"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM0qxGirNSHb6O50NkzUYTzxpZB9Z47yt5ISuPQggQStyAFjchoQgFVSHPcBO2nVECQ6NfeChOZhMmyI34KjPsw6C-p0-x62rVBEq6gJu00g7Z5LXYS8HaPWcJGpSkB52YfONTMW_ox4kmz66zcYley5kkWHCvtk9oHwFFiu-_VQ_SUG7aEaBO4wFMt5V_TIJ3ATm57iATJymq-kN9MTAvn58gtLo6uWfNnn45rmlz58h08f3CF4R7meP7UIrCazU_-x5fY7oLGvCg" />
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-semibold truncate">Alex Rivera</p>
+                    <p class="text-xs text-primary font-medium">Pro Plan</p>
+                </div>
+                <span class="material-icons-round text-slate-400">settings</span>
+            </div>
+        </div>
+    </aside>
+    <!-- Main Workspace -->
+    <main class="flex-1 flex flex-col relative overflow-hidden bg-background-light dark:bg-background-dark">
+        <!-- Top Generation Bar -->
+        <header class="p-6 flex justify-center z-10">
+            <div class="glass-panel w-full max-w-5xl rounded-2xl p-4 shadow-2xl flex flex-col gap-4">
+                <div class="flex gap-4">
+                    <div class="flex-1 relative">
+                        <textarea
+                            class="w-full bg-slate-900/50 dark:bg-black/20 border border-slate-200 dark:border-slate-700/50 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none h-14"
+                            placeholder="Describe what you want to create...">A futuristic neon cityscape in the style of cyberpunk, cinematic lighting, 8k resolution, highly detailed</textarea>
+                        <div class="absolute right-3 top-3 flex gap-2">
+                            <button class="p-1.5 text-slate-400 hover:text-white transition-colors">
+                                <span class="material-icons-round text-lg">auto_fix_high</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-primary hover:bg-primary/90 text-white px-8 rounded-xl font-semibold flex items-center gap-2 transition-all glow-button h-14">
+                        <span class="material-icons-round animate-spin text-lg"
+                            style="animation-duration: 3s;">sync</span>
+                        Generate
+                    </button>
+                </div>
+                <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                    <div class="flex items-center gap-6">
+                        <!-- Style Selector -->
+                        <div class="flex flex-col gap-1">
+                            <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Style</span>
+                            <div class="relative group">
+                                <button
+                                    class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg text-sm font-medium border border-transparent hover:border-slate-700 transition-all">
+                                    <span class="material-icons-round text-primary text-sm">movie</span>
+                                    Cinematic
+                                    <span class="material-icons-round text-slate-500 text-sm">expand_more</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Aspect Ratio -->
+                        <div class="flex flex-col gap-1">
+                            <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Aspect
+                                Ratio</span>
+                            <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+                                <button
+                                    class="px-3 py-1 rounded-md text-[11px] font-bold bg-primary text-white shadow-sm">1:1</button>
+                                <button
+                                    class="px-3 py-1 rounded-md text-[11px] font-bold text-slate-500 hover:text-slate-300">16:9</button>
+                                <button
+                                    class="px-3 py-1 rounded-md text-[11px] font-bold text-slate-500 hover:text-slate-300">4:3</button>
+                                <button
+                                    class="px-3 py-1 rounded-md text-[11px] font-bold text-slate-500 hover:text-slate-300">2:3</button>
+                            </div>
+                        </div>
+                        <!-- Model Version -->
+                        <div class="flex flex-col gap-1">
+                            <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Engine</span>
+                            <button
+                                class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg text-sm font-medium border border-transparent hover:border-slate-700 transition-all">
+                                Hunna-v2.5
+                                <span
+                                    class="bg-primary/20 text-primary text-[9px] px-1.5 py-0.5 rounded uppercase">Latest</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button
+                            class="flex items-center gap-2 text-slate-400 hover:text-white px-3 py-1.5 rounded-lg text-sm transition-colors">
+                            <span class="material-icons-round text-sm">tune</span>
+                            Advanced Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Canvas Area -->
+        <div class="flex-1 overflow-y-auto px-10 pb-24 custom-scrollbar">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto py-4">
+                <!-- Image Card 1 -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900/40">
+                    <img class="w-full h-auto object-cover aspect-[4/3]" data-alt="High-tech glowing server room"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa5ZwcP2BZijFO898FCPBVM81nPdE1XqExEnv8WM8zaxhgR0oXgTD6pz3Pyjvv1OosUrIqONIeoRZO--c-3rV2XXSH48Gi7dkND2bh3i3Vt_FxlXzEVo27UPXQ2yfqWm6KTxeBa-rm-s8l_VjmxtBP9774Nd6Q6qOzLowCFdUpMnlAeC__0WGNNVrfpGDdH00_iS5d73BEFuPi6XoNjP_hXFJ_3tLeviOZKqulZa8Ah5Tn6hQ3Yc2n7E7a7u6E3mrx0HvRzJQs0R_2" />
+                    <div
+                        class="card-overlay absolute inset-0 bg-black/40 opacity-0 transition-opacity flex flex-col justify-between p-4">
+                        <div class="flex justify-end gap-2">
+                            <button
+                                class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                <span class="material-icons-round">favorite_border</span>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-2">
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md text-white text-xs font-semibold hover:bg-white/20 transition-colors border border-white/10">
+                                    Upscale 4K
+                                </button>
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md text-white text-xs font-semibold hover:bg-white/20 transition-colors border border-white/10">
+                                    Variations
+                                </button>
+                            </div>
+                            <button
+                                class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg">
+                                <span class="material-icons-round">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Image Card 2 (Active/Loading state) -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden border border-primary/50 bg-slate-900/40 ring-4 ring-primary/20">
+                    <div class="absolute inset-0 bg-slate-900 flex flex-col items-center justify-center gap-4">
+                        <div class="relative w-20 h-20">
+                            <div class="absolute inset-0 rounded-full border-4 border-primary/20"></div>
+                            <div
+                                class="absolute inset-0 rounded-full border-4 border-primary border-t-transparent animate-spin">
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center text-primary font-bold">
+                                64%
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400 font-medium">Rendering textures...</p>
+                    </div>
+                    <img class="w-full h-auto object-cover aspect-[4/3] opacity-0"
+                        data-alt="Abstract vibrant wave patterns"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPEIl2QYsxNs4SQpJYOCubNudAy7gOByAmjHN_iGR4JHRgoEimP-kaLV617knf_PhGSx3guDgMAWWwY5rgafxkEeTVHfqUO5Ro5VK9-9-BstkA3yJoEoX8VNJda2TyK0W-RpM1206mia9fn_hurmqX7Th7PPNazyrFuDHSQ9YLepDCdvmz5-wHhJDNM-RD6-gj270r0sI-JSXqALoukm2VYmbhAvxrfA0-IAHbliUJ0K2TJqodKNkAbSJ7XRc0gQplsIeNjR3SoWn-" />
+                </div>
+                <!-- Image Card 3 -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900/40">
+                    <img class="w-full h-auto object-cover aspect-[4/3]" data-alt="Cyberpunk character in neon city"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOWejQFSYGiU2dIhJrs7HAjKV_vDuy9huizZGjTFuG8WLYn85PISJxqobeFWFnMrLRO34uiEzbiWgqLfiu3viQHorvWzFJbG_LVSASPvzA-l1Yk2BqHa57vYWRIVgOolQzD8Bynb6E5D7IEfseoIZ06_BEYbYhqrbjuO_a9pWsBKy8Azl0iqj2D4D1iqTVDaCYw0TFmKFtweHBj7dil7NIaZUP4BjLyyHUtfgHdGtfFLtImzFXsV7zxawM6WreNPXgu5mFZRn0Gn-x" />
+                    <div
+                        class="card-overlay absolute inset-0 bg-black/40 opacity-0 transition-opacity flex flex-col justify-between p-4">
+                        <div class="flex justify-end gap-2">
+                            <button
+                                class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                <span class="material-icons-round">favorite_border</span>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-2">
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md text-white text-xs font-semibold hover:bg-white/20 transition-colors border border-white/10">
+                                    Upscale 4K
+                                </button>
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md text-white text-xs font-semibold hover:bg-white/20 transition-colors border border-white/10">
+                                    Variations
+                                </button>
+                            </div>
+                            <button
+                                class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg">
+                                <span class="material-icons-round">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Image Card 4 -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900/40">
+                    <img class="w-full h-auto object-cover aspect-[4/3]" data-alt="Neon organic abstract shapes"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuADOz12DRLNw57G7QqnIqTzBXnolJcFWP0n0SrNYv-3EH9zcMwGGDKhJUPvfK3JFcDl07DJ3788psywuWrTWecYaHeBsqc90SBVdE0wFFROTbCJg0Mu_Z6WcX0_i4qMoD0Z_TaFTPmV5qt1qHnfjkuSMHRZ-LB3tWC6Ldw9cxxenGO9Waf0ajpYfZDVY7ab-0ottU0lN2CSDafUldWaSrM3GrUOXz4hC6AJnnluPKarThj0r0gWuQ4VRc60JWcXN25S6zpx1s2wWvz-" />
+                    <div
+                        class="card-overlay absolute inset-0 bg-black/40 opacity-0 transition-opacity flex flex-col justify-between p-4">
+                        <div class="flex justify-end gap-2">
+                            <button
+                                class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                <span class="material-icons-round">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-2">
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md text-white text-xs font-semibold hover:bg-white/20 transition-colors border border-white/10">
+                                    Upscale 4K
+                                </button>
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md text-white text-xs font-semibold hover:bg-white/20 transition-colors border border-white/10">
+                                    Variations
+                                </button>
+                            </div>
+                            <button
+                                class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg">
+                                <span class="material-icons-round">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Bar: Settings Drawer (Partial View) -->
+        <div
+            class="absolute bottom-0 inset-x-0 glass-panel border-t border-slate-200 dark:border-slate-800 p-4 translate-y-24 hover:translate-y-0 transition-transform duration-500 ease-in-out">
+            <div class="max-w-7xl mx-auto flex items-start gap-12">
+                <div class="flex-1 space-y-4">
+                    <label class="text-xs font-bold text-slate-500 uppercase">Negative Prompt</label>
+                    <input
+                        class="w-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2 text-sm text-slate-300"
+                        placeholder="Items to exclude from image (blurry, low quality, distorted...)" type="text" />
+                </div>
+                <div class="w-64 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <label class="text-xs font-bold text-slate-500 uppercase">Guidance Scale</label>
+                        <span class="text-xs font-bold text-primary">7.5</span>
+                    </div>
+                    <div class="relative h-1.5 w-full bg-slate-800 rounded-full">
+                        <div class="absolute h-full w-[60%] bg-primary rounded-full"></div>
+                        <div
+                            class="absolute top-1/2 left-[60%] -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg border-2 border-primary">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-48 space-y-4">
+                    <label class="text-xs font-bold text-slate-500 uppercase">Seed</label>
+                    <div class="flex gap-2">
+                        <input
+                            class="w-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-300"
+                            type="text" value="8429304" />
+                        <button class="p-1.5 bg-slate-800 rounded-lg text-slate-400">
+                            <span class="material-icons-round text-sm">refresh</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-48 space-y-4">
+                    <label class="text-xs font-bold text-slate-500 uppercase">Sampler</label>
+                    <button
+                        class="w-full flex justify-between items-center bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-300">
+                        Euler a
+                        <span class="material-icons-round text-sm">expand_more</span>
+                    </button>
+                </div>
+            </div>
+            <div
+                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 border border-slate-700 rounded-t-xl px-4 py-2 text-[10px] font-bold text-slate-400 cursor-pointer flex items-center gap-2">
+                <span class="material-icons-round text-xs">keyboard_arrow_up</span>
+                ADVANCED CONTROLS
+            </div>
+        </div>
+    </main>
+    <!-- Right Utility Bar -->
+    <aside
+        class="w-16 border-l border-slate-200 dark:border-slate-800 flex flex-col items-center py-6 gap-6 bg-background-light dark:bg-background-dark z-20">
+        <button
+            class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center transition-all hover:bg-primary/20">
+            <span class="material-icons-round">brush</span>
+        </button>
+        <button
+            class="w-10 h-10 rounded-xl text-slate-400 flex items-center justify-center transition-all hover:bg-slate-800 hover:text-white">
+            <span class="material-icons-round">layers</span>
+        </button>
+        <button
+            class="w-10 h-10 rounded-xl text-slate-400 flex items-center justify-center transition-all hover:bg-slate-800 hover:text-white">
+            <span class="material-icons-round">history_edu</span>
+        </button>
+        <div class="flex-1"></div>
+        <button
+            class="w-10 h-10 rounded-xl text-slate-400 flex items-center justify-center transition-all hover:bg-slate-800 hover:text-white">
+            <span class="material-icons-round">help_outline</span>
+        </button>
+    </aside>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

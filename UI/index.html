@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hunna AI | All AI. One Platform.</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3713ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#05050a",
+                        "neutral-900": "#0a0a14",
+                        "neutral-800": "#151525",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #05050a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-dark {
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(55, 19, 236, 0.2);
+        }
+
+        .glow-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(55, 19, 236, 0.15) 0%, rgba(55, 19, 236, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #3713ec, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link:hover {
+            color: #3713ec;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+    <!-- Background Orbs -->
+    <div class="glow-orb top-[-100px] left-[-100px]"></div>
+    <div class="glow-orb top-[40%] right-[-100px] opacity-50"></div>
+    <div class="glow-orb bottom-[-100px] left-[20%]"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                    <span class="material-icons-round text-white text-xl">bolt</span>
+                </div>
+                <span class="text-2xl font-bold tracking-tight">HUNNA<span class="text-primary">.</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+                <a class="nav-link transition-colors" href="#">Platform</a>
+                <a class="nav-link transition-colors" href="#">Solutions</a>
+                <a class="nav-link transition-colors" href="#">Pricing</a>
+                <a class="nav-link transition-colors" href="#">Developers</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="login.html"
+                    class="px-5 py-2 text-sm font-medium hover:text-primary transition-colors">Log In</a>
+                <a href="login.html"
+                    class="px-5 py-2 bg-primary hover:bg-primary/90 rounded-lg text-sm font-semibold text-white transition-all shadow-lg shadow-primary/20">Get
+                    Started</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <header class="pt-48 pb-24 px-6 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                The Future of Workflow
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-[1.1]">
+                All AI. <span class="text-gradient">One Platform.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Chat, Analyze, Create, Automate. Seamlessly integrate the world's most powerful AI models into your
+                daily workflow.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button
+                    class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary/90 rounded-xl text-lg font-bold text-white transition-all shadow-[0_0_40px_rgba(55,19,236,0.3)] hover:scale-105">
+                    Start Building Free
+                </button>
+                <button
+                    class="w-full sm:w-auto px-8 py-4 glass hover:bg-white/10 rounded-xl text-lg font-bold text-white transition-all">
+                    Explore Tools
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Dashboard Preview Section -->
+    <section class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="relative rounded-2xl p-1 bg-gradient-to-b from-primary/30 to-transparent shadow-2xl">
+                <div class="glass-dark rounded-xl overflow-hidden aspect-[16/10] flex">
+                    <!-- Dashboard Sidebar -->
+                    <aside class="w-64 border-r border-white/5 hidden md:flex flex-col p-6">
+                        <div class="space-y-6">
+                            <div class="p-3 bg-white/5 rounded-lg border border-white/10 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-primary/20"></div>
+                                <div class="flex-1 h-3 bg-white/10 rounded-full"></div>
+                            </div>
+                            <nav class="space-y-4">
+                                <div class="flex items-center gap-3 text-primary">
+                                    <span class="material-icons-round text-lg">dashboard</span>
+                                    <span class="h-2 w-16 bg-primary/40 rounded-full"></span>
+                                </div>
+                                <div class="flex items-center gap-3 text-slate-500">
+                                    <span class="material-icons-round text-lg">chat_bubble</span>
+                                    <span class="h-2 w-20 bg-white/10 rounded-full"></span>
+                                </div>
+                                <div class="flex items-center gap-3 text-slate-500">
+                                    <span class="material-icons-round text-lg">analytics</span>
+                                    <span class="h-2 w-14 bg-white/10 rounded-full"></span>
+                                </div>
+                                <div class="flex items-center gap-3 text-slate-500">
+                                    <span class="material-icons-round text-lg">auto_fix_high</span>
+                                    <span class="h-2 w-24 bg-white/10 rounded-full"></span>
+                                </div>
+                            </nav>
+                        </div>
+                    </aside>
+                    <!-- Dashboard Main Content (Chat Interface) -->
+                    <main class="flex-1 flex flex-col p-8 relative overflow-hidden">
+                        <div class="flex-1 flex flex-col gap-6 max-w-2xl mx-auto w-full">
+                            <div class="flex gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-primary/20 flex-shrink-0 flex items-center justify-center">
+                                    <span class="material-icons-round text-primary text-xl">smart_toy</span>
+                                </div>
+                                <div class="p-4 glass rounded-2xl rounded-tl-none border border-white/10">
+                                    <p class="text-sm text-slate-300">How can I assist your workflow today? I can help
+                                        you analyze documents, generate code, or draft complex emails in seconds.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 justify-end">
+                                <div class="p-4 bg-primary/10 rounded-2xl rounded-tr-none border border-primary/20">
+                                    <p class="text-sm text-slate-300">Can you summarize my latest project notes and
+                                        highlight the key action items for the engineering team?</p>
+                                </div>
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-white/5 flex-shrink-0 flex items-center justify-center">
+                                    <span class="material-icons-round text-slate-400 text-xl">person</span>
+                                </div>
+                            </div>
+                            <!-- Mock UI element -->
+                            <div class="mt-4 p-6 glass rounded-2xl border border-primary/20 bg-primary/5">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="material-icons-round text-primary">description</span>
+                                    <span class="font-bold text-sm">Project_Specs_V2.pdf</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="h-2 w-full bg-primary/20 rounded-full"></div>
+                                    <div class="h-2 w-3/4 bg-primary/10 rounded-full"></div>
+                                    <div class="h-2 w-5/6 bg-primary/10 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Chat Input Mock -->
+                        <div class="mt-auto h-16 glass rounded-xl border border-white/10 flex items-center px-4 gap-4">
+                            <span class="material-icons-round text-slate-500">attachment</span>
+                            <div class="flex-1 h-2 bg-white/5 rounded-full"></div>
+                            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                <span class="material-icons-round text-white text-sm">send</span>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <!-- Floating Element Decoration -->
+                <div
+                    class="absolute -bottom-6 -right-6 glass p-4 rounded-xl shadow-xl hidden md:block border border-primary/40">
+                    <div class="flex items-center gap-3">
+                        <div class="flex -space-x-2">
+                            <div class="w-8 h-8 rounded-full border-2 border-[#05050a] bg-slate-800"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-[#05050a] bg-primary"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-[#05050a] bg-purple-600"></div>
+                        </div>
+                        <span class="text-xs font-medium text-slate-300">12k+ Active Teams</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Feature Grid Section -->
+    <section class="py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Everything you need to <span
+                        class="text-primary">scale</span>.</h2>
+                <p class="text-slate-400 max-w-xl mx-auto">Six powerful modules, one unified interface. Eliminate tool
+                    fatigue and focus on what matters.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- AI Chat Card -->
+                <div class="glass p-8 rounded-2xl border border-white/5 hover:border-primary/40 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons-round text-primary text-3xl">forum</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI Chat</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Converse with the latest models (GPT-4, Claude 3,
+                        Gemini) in a single unified thread with file awareness.</p>
+                </div>
+                <!-- Email Reader Card -->
+                <div class="glass p-8 rounded-2xl border border-white/5 hover:border-primary/40 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons-round text-blue-500 text-3xl">mail</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Email Reader</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Let AI scan your inbox, summarize threads, and
+                        draft high-context replies in your unique brand voice.</p>
+                </div>
+                <!-- Resume Analyzer Card -->
+                <div class="glass p-8 rounded-2xl border border-white/5 hover:border-primary/40 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons-round text-purple-500 text-3xl">badge</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Resume Analyzer</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Instantly parse thousands of resumes, rank
+                        candidates by skill match, and generate interview questions.</p>
+                </div>
+                <!-- Code Assistant Card -->
+                <div class="glass p-8 rounded-2xl border border-white/5 hover:border-primary/40 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons-round text-cyan-500 text-3xl">code</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Code Assistant</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Write, debug, and optimize code across 30+
+                        languages. Specialized in modern frameworks and architecture.</p>
+                </div>
+                <!-- Image Generator Card -->
+                <div class="glass p-8 rounded-2xl border border-white/5 hover:border-primary/40 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons-round text-pink-500 text-3xl">palette</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Image Generator</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Create stunning marketing assets and UI mockups
+                        from text descriptions using state-of-the-art latent diffusion.</p>
+                </div>
+                <!-- Notes Summarizer Card -->
+                <div class="glass p-8 rounded-2xl border border-white/5 hover:border-primary/40 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons-round text-orange-500 text-3xl">summarize</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Notes Summarizer</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Turn hour-long meeting recordings into 3-minute
+                        summaries with auto-detected action items and owners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Section -->
+    <section class="py-32 px-6 bg-white/2">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Flexible plans for <span
+                        class="text-primary">everyone</span>.</h2>
+                <p class="text-slate-400">Scale your intelligence without breaking the bank.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- Free Plan -->
+                <div class="glass p-10 rounded-2xl flex flex-col border border-white/5">
+                    <h3 class="text-2xl font-bold mb-2">Free</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-bold">$0</span>
+                        <span class="text-slate-500">/mo</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-8">Perfect for exploring the power of AI in your personal
+                        projects.</p>
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Basic AI Chat Access
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            50 Summaries / month
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Community Support
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-lg border border-white/10 hover:bg-white/5 font-bold transition-all">Get
+                        Started</button>
+                </div>
+                <!-- Pro Plan -->
+                <div
+                    class="glass p-10 rounded-2xl flex flex-col border-2 border-primary shadow-[0_0_50px_rgba(55,19,236,0.15)] relative transform scale-105 z-10">
+                    <div
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">
+                        Most Popular</div>
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-bold">$29</span>
+                        <span class="text-slate-500">/mo</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-8">The ultimate toolset for professionals and high-performance
+                        teams.</p>
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-slate-300 font-medium">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Advanced Models (GPT-4o)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300 font-medium">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Unlimited Summaries &amp; Chat
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300 font-medium">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Image Generation Pro
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300 font-medium">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Priority Email Support
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-4 rounded-lg bg-primary hover:bg-primary/90 font-bold text-white transition-all shadow-lg shadow-primary/20">Upgrade
+                        Now</button>
+                </div>
+                <!-- Enterprise Plan -->
+                <div class="glass p-10 rounded-2xl flex flex-col border border-white/5">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-bold">Custom</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-8">Customized solutions for large organizations and specific
+                        compliance needs.</p>
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Dedicated Account Manager
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Custom API Access
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            SAML SSO &amp; Advanced Security
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-icons-round text-primary text-lg">check_circle</span>
+                            Custom Training &amp; Fine-tuning
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-lg border border-white/10 hover:bg-white/5 font-bold transition-all">Contact
+                        Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-white/5 bg-background-dark">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12">
+            <div class="col-span-2 md:col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                        <span class="material-icons-round text-white text-xl">bolt</span>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight">HUNNA<span class="text-primary">.</span></span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Redefining productivity through the power of unified artificial intelligence.
+                </p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full glass flex items-center justify-center text-slate-400 hover:text-primary transition-colors"
+                        href="#">
+                        <span class="material-icons-round text-xl">public</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full glass flex items-center justify-center text-slate-400 hover:text-primary transition-colors"
+                        href="#">
+                        <span class="material-icons-round text-xl">camera</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full glass flex items-center justify-center text-slate-400 hover:text-primary transition-colors"
+                        href="#">
+                        <span class="material-icons-round text-xl">alternate_email</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Product</h4>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a class="hover:text-primary transition-colors" href="#">AI Chat</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Email Assistant</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Code Tools</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Integrations</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Company</h4>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Security</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Legal</h4>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-600">
+            <p>© 2024 Hunna AI Platform Inc. All rights reserved.</p>
+            <div class="flex gap-8">
+                <a class="hover:text-white transition-colors" href="#">Status</a>
+                <a class="hover:text-white transition-colors" href="#">Help Center</a>
+                <a class="hover:text-white transition-colors" href="#">API Docs</a>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
