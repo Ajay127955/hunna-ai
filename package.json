@@ -1,0 +1,23 @@
+{
+  "name": "hunna-ai-deployment",
+  "version": "1.0.0",
+  "description": "Root documentation for deployment",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "cd server && node server.js",
+    "build": "echo 'No build necessary'"
+  },
+  "dependencies": {
+    "cookie-session": "^2.1.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.1",
+    "nodemon": "^3.1.11",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
