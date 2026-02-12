@@ -65,9 +65,9 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display min-h-screen flex items-center justify-center p-4 nebula-bg">
+    class="bg-background-light dark:bg-background-dark font-display min-h-screen flex items-center justify-center p-4 py-10 nebula-bg overflow-x-hidden">
 
-    <div class="w-full max-w-md z-10">
+    <div class="w-full max-w-md z-10 relative">
         <div class="text-center mb-8">
             <div
                 class="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-background-dark/50 border border-white/10 mb-4 shadow-[0_0_20px_rgba(13,127,242,0.4)]">
@@ -110,7 +110,7 @@
             const otp = document.getElementById('otp').value;
 
             try {
-                const response = await fetch('http://localhost:5000/auth/verify-otp', {
+                const response = await fetch('/auth/verify-otp', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
