@@ -32,8 +32,13 @@ mongoose.connect(process.env.MONGO_URI, {
     .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/auth', require('./routes/auth'));
-app.use('/api', require('./routes/api'));
+const authRoutes = require('./routes/auth');
+const apiRoutes = require('./routes/api');
+const aiRoutes = require('./routes/ai'); // [NEW]
+
+app.use('/auth', authRoutes);
+app.use('/api', apiRoutes);
+app.use('/api/ai', aiRoutes); // [NEW]
 
 const path = require('path');
 
