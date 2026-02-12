@@ -195,18 +195,25 @@
                     body: JSON.stringify({ displayName: fullName, email, password })
                 });
 
-                const data = await response.json();
+                // Attempt to parse JSON, but handle text if it fails
+                const text = await response.text();
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    throw new Error('Server returned non-JSON response: ' + text);
+                }
 
                 if (response.ok) {
                     // Store email for OTP verification
                     localStorage.setItem('verificationEmail', email);
                     window.location.href = 'verify-otp.html';
                 } else {
-                    alert(data.msg || 'Registration failed');
+                    alert(data.msg || 'Registration failed: ' + (data.error || 'Unknown error'));
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred during registration.');
+                alert('An error occurred during registration: ' + error.message);
             }
         });
     </script>

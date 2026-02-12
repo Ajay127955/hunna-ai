@@ -45,7 +45,7 @@ exports.register = async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({ msg: 'Server Error', error: err.message });
     }
 };
 
@@ -75,7 +75,7 @@ exports.verifyOTP = async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({ msg: 'Server Error', error: err.message });
     }
 };
 
@@ -107,9 +107,10 @@ exports.login = async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({ msg: 'Server Error', error: err.message });
     }
 };
+
 exports.requestReset = async (req, res) => {
     try {
         const { email } = req.body;
@@ -128,14 +129,14 @@ exports.requestReset = async (req, res) => {
 
         const emailSent = await sendResetOTP(email, otp);
         if (!emailSent) {
-            return res.status(500).json({ msg: 'Error sending email' });
+            return res.status(500).json({ msg: 'Error sending email. Check server logs.' });
         }
 
         res.status(200).json({ msg: 'Reset OTP sent to email' });
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({ msg: 'Server Error', error: err.message });
     }
 };
 
@@ -166,6 +167,6 @@ exports.resetPassword = async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({ msg: 'Server Error', error: err.message });
     }
 };

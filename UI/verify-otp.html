@@ -118,17 +118,23 @@
                     body: JSON.stringify({ email, otp })
                 });
 
-                const data = await response.json();
+                const text = await response.text();
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    throw new Error('Server returned non-JSON: ' + text);
+                }
 
                 if (response.ok) {
                     alert('Verification successful! You can now log in.');
                     window.location.href = 'login.html';
                 } else {
-                    alert(data.msg || 'Verification failed');
+                    alert(data.msg || 'Verification failed: ' + (data.error || 'Unknown error'));
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred during verification.');
+                alert('An error occurred during verification: ' + error.message);
             }
         });
     </script>
