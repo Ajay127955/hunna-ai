@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <title>Hunna AI | Verify Account</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(16, 25, 34, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nebula-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(13, 127, 242, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                #101922;
+        }
+
+        .otp-input {
+            background: rgba(16, 25, 34, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .otp-input:focus {
+            outline: none;
+            border-color: #0d7ff2;
+            box-shadow: 0 0 10px rgba(13, 127, 242, 0.3);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display min-h-screen flex items-center justify-center p-4 nebula-bg">
+
+    <div class="w-full max-w-md z-10">
+        <div class="text-center mb-8">
+            <div
+                class="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-background-dark/50 border border-white/10 mb-4 shadow-[0_0_20px_rgba(13,127,242,0.4)]">
+                <span class="material-icons-round text-primary text-4xl">mark_email_read</span>
+            </div>
+            <h1 class="text-3xl font-bold text-white tracking-tight">Verify Email</h1>
+            <p class="text-slate-400 mt-2 text-sm">Enter the code sent to <span id="userEmail"
+                    class="text-white font-medium">your email</span></p>
+        </div>
+
+        <div class="glass-card rounded-xl p-8 shadow-2xl">
+            <form id="otpForm" class="space-y-6">
+                <div class="flex justify-between gap-2">
+                    <!-- Single input for simplicity in this case, but often split -->
+                    <input class="w-full otp-input py-3 tracking-[1em] font-mono text-2xl" id="otp" name="otp"
+                        placeholder="123456" type="text" maxlength="6" required />
+                </div>
+
+                <button
+                    class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(13,127,242,0.4)] flex items-center justify-center"
+                    type="submit">
+                    Verify Account
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const email = localStorage.getItem('verificationEmail');
+        if (email) {
+            document.getElementById('userEmail').textContent = email;
+        } else {
+            // If no email found, redirect back to register
+            window.location.href = 'register.html';
+        }
+
+        document.getElementById('otpForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const otp = document.getElementById('otp').value;
+
+            try {
+                const response = await fetch('http://localhost:5000/auth/verify-otp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, otp })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Verification successful! You can now log in.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert(data.msg || 'Verification failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during verification.');
+            }
+        });
+    </script>
+</body>
+
+</html>

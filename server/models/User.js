@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     googleId: {
         type: String,
-        required: true,
-        unique: true
+        unique: true,
+        sparse: true // Allows multiple users to have null googleId
     },
     displayName: {
         type: String,
@@ -12,10 +12,24 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String
     },
     avatar: {
         type: String
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    otp: {
+        type: String
+    },
+    otpExpires: {
+        type: Date
     },
     createdAt: {
         type: Date,

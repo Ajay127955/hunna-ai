@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <title>Hunna AI | Create Account</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(16, 25, 34, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .neon-glow-primary:focus {
+            box-shadow: 0 0 15px rgba(13, 127, 242, 0.3);
+            border-color: #0d7ff2;
+        }
+
+        .neon-glow-error {
+            box-shadow: 0 0 15px rgba(248, 113, 113, 0.2);
+            border-color: #f87171 !important;
+        }
+
+        .nebula-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(13, 127, 242, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                #101922;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display min-h-screen flex items-center justify-center p-4 nebula-bg">
+    <!-- Background Decoration Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]"></div>
+    </div>
+    <div class="w-full max-w-md z-10">
+        <!-- Branding Header -->
+        <div class="text-center mb-8">
+            <div
+                class="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-background-dark/50 border border-white/10 mb-4 shadow-[0_0_20px_rgba(13,127,242,0.4)]">
+                <span class="material-icons-round text-primary text-4xl">Auto_awesome</span>
+            </div>
+            <h1 class="text-3xl font-bold text-white tracking-tight">Hunna<span class="text-primary">.</span></h1>
+            <p class="text-slate-400 mt-2 text-sm">Join the future of AI</p>
+        </div>
+        <!-- Login Card -->
+        <div class="glass-card rounded-xl p-8 shadow-2xl">
+            <form id="registerForm" class="space-y-6">
+                <!-- Full Name Input -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2" for="fullName">Full Name</label>
+                    <div class="relative">
+                        <input
+                            class="w-full bg-background-dark/40 border border-white/10 rounded-lg py-3 px-4 text-white placeholder-slate-500 transition-all focus:outline-none neon-glow-primary"
+                            id="fullName" name="fullName" placeholder="John Doe" type="text" required />
+                    </div>
+                </div>
+
+                <!-- Email Input -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2" for="email">Email Address</label>
+                    <div class="relative">
+                        <input
+                            class="w-full bg-background-dark/40 border border-white/10 rounded-lg py-3 px-4 text-white placeholder-slate-500 transition-all focus:outline-none neon-glow-primary"
+                            id="email" name="email" placeholder="name@company.com" type="email" required />
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2" for="password">Password</label>
+                    <div class="relative">
+                        <input
+                            class="w-full bg-background-dark/40 border border-white/10 rounded-lg py-3 px-4 text-white placeholder-slate-500 transition-all focus:outline-none neon-glow-primary"
+                            id="password" name="password" placeholder="••••••••" type="password" required />
+                    </div>
+                </div>
+
+                <!-- Confirm Password Input -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2" for="confirmPassword">Confirm
+                        Password</label>
+                    <div class="relative">
+                        <input
+                            class="w-full bg-background-dark/40 border border-white/10 rounded-lg py-3 px-4 text-white placeholder-slate-500 transition-all focus:outline-none neon-glow-primary"
+                            id="confirmPassword" name="confirmPassword" placeholder="••••••••" type="password"
+                            required />
+                    </div>
+                    <p id="passwordError" class="text-red-400 text-xs mt-1 hidden">Passwords do not match</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-[0_0_20px_rgba(13,127,242,0.4)] flex items-center justify-center group"
+                    type="submit">
+                    <span>Create Account</span>
+                    <span
+                        class="material-icons-round ml-2 text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </button>
+
+                <!-- Divider -->
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-white/10"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-[#101922] text-slate-500">Or continue with</span>
+                    </div>
+                </div>
+
+                <!-- Social Login -->
+                <div class="grid grid-cols-1 gap-3">
+                    <a href="/auth/google"
+                        class="flex items-center justify-center w-full px-4 py-3 border border-white/10 rounded-lg hover:bg-white/5 transition-colors group">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="h-5 w-5 mr-3"
+                            alt="Google">
+                        <span class="text-slate-300 font-medium group-hover:text-white transition-colors">Google</span>
+                    </a>
+                </div>
+            </form>
+
+            <!-- Footer -->
+            <div class="mt-8 text-center text-sm text-slate-400">
+                Already have an account?
+                <a class="text-primary hover:text-blue-400 font-medium transition-colors ml-1" href="login.html">Sign
+                    in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordError = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                passwordError.classList.remove('hidden');
+                return;
+            } else {
+                passwordError.classList.add('hidden');
+            }
+
+            try {
+                const response = await fetch('http://localhost:5000/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ displayName: fullName, email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Store email for OTP verification
+                    localStorage.setItem('verificationEmail', email);
+                    window.location.href = 'verify-otp.html';
+                } else {
+                    alert(data.msg || 'Registration failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during registration.');
+            }
+        });
+    </script>
+</body>
+
+</html>

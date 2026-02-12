@@ -26,4 +26,10 @@ router.get('/current_user', (req, res) => {
     res.send(req.user);
 });
 
+const authController = require('../controllers/authController');
+
+router.post('/register', authController.register);
+router.post('/verify-otp', authController.verifyOTP);
+router.post('/login', authController.login);
+
 module.exports = router;
