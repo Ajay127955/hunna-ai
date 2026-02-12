@@ -35,8 +35,10 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use('/auth', require('./routes/auth'));
 app.use('/api', require('./routes/api'));
 
-// Serve UI files statically for now (optional, but good for testing)
-app.use('/UI', express.static('../UI'));
+const path = require('path');
+
+// Serve UI files statically
+app.use('/UI', express.static(path.join(__dirname, '../UI')));
 app.get('/', (req, res) => {
     res.redirect('/UI/index.html');
 });
