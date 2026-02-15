@@ -194,7 +194,7 @@
                     localStorage.setItem('verificationEmail', email);
                     window.location.href = 'verify-otp.html';
                 } else {
-                    alert(data.msg || 'Registration failed: ' + (data.error || 'Unknown error'));
+                    alert(data.msg + (data.error ? '\nDetails: ' + data.error : ''));
                 }
             } catch (error) {
                 console.error('Error:', error);
