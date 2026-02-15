@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-    googleId: {
-        type: String,
-        unique: true,
-        sparse: true // Allows multiple users to have null googleId
-    },
+    // googleId removed
     displayName: {
         type: String,
         required: true
